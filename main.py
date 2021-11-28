@@ -1,3 +1,6 @@
+#Random NN Game 1.0.0
+
+#Imports
 import numpy as np
 import numpy.random as rand
 import random
@@ -26,6 +29,7 @@ syn0 = 2 * np.random.random((3, 1)) - 1
 
 l1 = []
 
+#Train
 for iter in range(10000):
     l0 = x
     l1 = sigmoid(np.dot(l0, syn0))
@@ -37,6 +41,8 @@ for iter in range(10000):
     syn0 += np.dot(l0.T, l1_delta)
 
 #Game
+
+#Brains - Logic Game
 r1 = random.randint(0, 1)
 r2 = random.randint(0, 1)
 r3 = random.randint(0, 1)
@@ -44,21 +50,17 @@ r3 = random.randint(0, 1)
 z = np.array([[r1,r2,r3]])
 l2 = z
 l3 = sigmoid(np.dot(l2, syn0))
-def txt():
-    if(l3 >= 0.8):
-        print("Неиронная сеть сделала выбор: ")
-        print(l3)
-        print("Извините, но вы проиграли!")
-    else:
-        print("Неиронная сеть сделала выбор: ")
-        print(l3)
-        print("Поздравляем вы, выйграли!")
 
 #Interfaces
+
+#Initialization
 window = Tk()
+#Window Game Title
 window.title("NN Game Random")
+#Window Game Size
 window.geometry('400x250')
 
+#Function
 def quit():
     sys.exit()
 
@@ -74,16 +76,19 @@ def game():
         restart.grid(column=0, row=2)
         return 
 
+#Text Game
 gamen = Label(window, text="Neural Network Game: Random!")  
 gamen.grid(column=0, row=0) 
 
 text = Label(window, text="Game")  
 text.grid(column=0, row=1) 
 
+#Buttons
 play = Button(window, text="Играть!", command=game)  
 play.grid(column=0, row=2)
 
 quit = Button(window, text="Quit", command=quit)
 quit.grid(column=0, row=3)
 
+#Loop Game Window.
 window.mainloop()
